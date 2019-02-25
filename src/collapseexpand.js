@@ -1,32 +1,30 @@
 var count = 0;
+var css = ".file-icon { cursor: pointer }";
+
+function fileIconClick(e) {
+    console.log("file-icon click");
+    var content = e.target.parentNode.parentNode.getElementsByClassName("item-details")[0];
+    content.hidden = !content.hidden;
+    e.preventDefault();
+};
 
 var handle = setInterval(function() {
 
-    function hookupCollapseExpand(item) {
-        var icon = item.getElementsByClassName("file-icon")[0];
-        var content = item.getElementsByClassName("item-details")[0];
-        icon.addEventListener("click", e => {
-            content.hidden = !content.hidden;
-            e.preventDefault();
-        });
-        icon.style["cursor"] = "pointer";
-    };
-
-
-    const items = document.getElementsByClassName("file-container");
-    for (var i of items) {
-        if (handle) {
-            clearInterval(handle);
-            handle = null;
-        }
-        hookupCollapseExpand(i);
-    }    
-
-    if (count > 100) {
-        // it takes too long, stop trying, maybe we are on the wrong page
+    const container = document.getElementsByClassName("files-container")[0];
+    if (container) {
         clearInterval(handle);
         handle = null;
-    }
 
-    count++;
-}, 100);
+        var style = document.createElement("style");
+        style.appendChild(document.createTextNode(css));
+        document.head.appendChild(style);
+        
+        console.log("files-container found, adding click listener");
+        container.addEventListener("click", function(e) {
+            console.log("click", e);
+            if (e.target.classList.contains("file-icon")) {
+                fileIconClick(e);
+            }
+        });
+    }
+}, 200);
