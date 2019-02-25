@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+
+ 	"name": "DevOps/TFS Pull request - collapse/expand file",
+ 	"description": "Enables collapsing/expaning files in PR by clicking to its file icon",
+ 	"version": "1.0",
+ 	"icons": { 
+ 		"48": "icon48.png",
+ 		"128": "icon128.png"
+	},
+ 	"background": { 
+ 		"scripts": ["background.js"] 
+	}, 
+	"content_scripts": [
+    	{ 
+    		"matches": [
+				"https://*/tfs/*/_git/*/pullrequest/*",
+				"https://*/*/*/_git/*/pullrequest/*",
+				"https://*/*/_git/*/pullrequest/*",
+				"https://*/_git/*/pullrequest/*"
+			], 
+    		"js": ["inject.js"] 
+    	}
+  	],
+  	"page_action": {
+    	"default_name": "PR Collapse/Expand",
+    	"default_icon": "icon19.png",
+    	"default_popup": "popup.html"
+	},  	
+  	"permissions": [
+  		"tabs"
+  	],
+  	"web_accessible_resources": [
+  		"collapseexpand.js"
+  	]
+}
