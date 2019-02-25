@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
- 	"name": "DevOps/TFS Pull request - collapse/expand file",
+ 	"name": "DevOps/TFS PR collapse/expand file",
  	"description": "Enables collapsing/expaning files in PR by clicking to its file icon",
  	"version": "1.0",
  	"icons": { 

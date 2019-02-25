@@ -1,6 +1,9 @@
 {
   "name": "tfs-pullrequest-collapseexpand-extension",
   "version": "1.0.0",
+  "scripts": {
+    "start": "grunt"
+  },
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-zip": "~0.12.0"
